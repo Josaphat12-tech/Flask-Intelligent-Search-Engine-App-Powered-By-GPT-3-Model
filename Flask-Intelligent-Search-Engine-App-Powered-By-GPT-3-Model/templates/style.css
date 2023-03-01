@@ -1,0 +1,7 @@
+.chat-message-content {
+    max-width: 80%;
+}
+
+.chat-message-content p {
+    font-size: 16px;
+}

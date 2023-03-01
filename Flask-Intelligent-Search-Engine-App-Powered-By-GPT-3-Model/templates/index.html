@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JB The Bot</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
+        integrity="sha512-gpDXV7yEfb+3flV7op/bswNwsVdZGWQ2JYzB8krRbDMJNVx1E2QlHvA8+RlSV98oTtT0Z3biq3tT+T1nAmhA/Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.18/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="bg-gray-200">
+<div class="container mx-auto my-10 d-flex justify-content-center">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold text-center mb-5">JB The Bot</h1>
+        <form class="mb-5" method="POST" id="question-form">
+            <div class="flex">
+                <input type="text" name="question" id="question-input"
+                    class="form-control py-3 px-4 flex-1 rounded-full mr-3" placeholder="Ask a question" autofocus>
+                <button type="submit" class="btn btn-primary rounded-full px-5 py-3">Ask Your Question</button>
+            </div>
+        </form>
+        <div id="chat-history">
+            {% for question, answer in chat_history %}
+            <div class="chat-message mb-4">
+                <div class="chat-message-content bg-white p-4 rounded-lg shadow">
+                    <p class="mb-0"><strong>You:</strong> {{ question }}</p>
+                </div>
+            </div>
+            <div class="chat-message mb-4 ml-auto">
+                <div class="chat-message-content bg-blue-500 text-white p-4 rounded-lg shadow">
+                    <p class="mb-0"><strong>Bot:</strong> {{ answer }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
